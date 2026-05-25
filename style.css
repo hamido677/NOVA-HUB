@@ -1,4 +1,17 @@
-/* FIREX-HUB UI SYSTEM */
+/* ══════════════════════════════════════
+   FIREX-HUB UI SYSTEM — UPGRADED
+   ══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Tajawal:wght@300;400;700&display=swap');
+
+:root {
+    --cyan: #00d4ff;
+    --cyan-dim: rgba(0, 212, 255, 0.15);
+    --cyan-glow: rgba(0, 212, 255, 0.6);
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --radius: 22px;
+}
 
 * {
     margin: 0;
@@ -6,14 +19,22 @@
     box-sizing: border-box;
 }
 
-/* ✅ فيديو الخلفية */
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── VIDEO BACKGROUND ── */
 .video-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
 }
 
@@ -24,93 +45,440 @@
     object-position: center;
 }
 
-/* طبقة داكنة فوق الفيديو باش يكون المحتوى واضح */
 .video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.03); /* overlay خفيف 0.03 */
 }
 
-/* المحتوى يكون فوق كل شيء */
-.content {
+/* ── PAGE WRAPPER ── */
+.page {
     position: relative;
     z-index: 1;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
+/* ── NAVBAR ── */
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    margin-bottom: 30px;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
-    width: 120px;
+    width: 52px;
     border-radius: 8px;
 }
 
-.menu {
-    font-size: 1rem;
+.nav-links {
+    display: flex;
+    gap: 28px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.nav-right {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.nav-right span:hover {
+    color: var(--cyan);
+}
+
+/* ── BODY: SIDEBAR + MAIN ── */
+.body-wrap {
+    display: flex;
+    flex: 1;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 200px;
+    min-width: 170px;
+    padding: 32px 18px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(0, 212, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sidebar-section h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-section ul li {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.25s;
+    text-align: right;
+}
+
+.sidebar-section ul li:hover,
+.sidebar-section ul li.active {
+    background: var(--cyan-dim);
+    color: var(--cyan);
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.chip {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    border-radius: 50px;
+    color: var(--cyan);
+    cursor: pointer;
+    background: var(--cyan-dim);
+    transition: all 0.2s;
+}
+
+.chip:hover {
+    background: rgba(0, 212, 255, 0.3);
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+    flex: 1;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ── HERO ── */
+.hero {
+    text-align: center;
+    padding: 30px 0 10px;
+}
+
+.hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px var(--cyan), 0 0 60px rgba(0, 212, 255, 0.3);
+    line-height: 1.2;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
     letter-spacing: 1px;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    text-shadow: 0 0 15px #00d4ff;
-    margin-bottom: 40px;
+/* ── GLOW BEHIND GRID ── */
+.grid-wrap {
+    position: relative;
 }
 
+.grid-wrap::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse at center,
+        rgba(0, 212, 255, 0.18) 0%,
+        rgba(0, 100, 180, 0.08) 50%,
+        transparent 75%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── PRODUCT GRID ── */
 .grid {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
+/* ── CARD ── */
 .card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 20px;
-    transition: 0.4s;
+    position: relative;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 22px 18px 20px;
+    transition: transform 0.35s ease, border-color 0.35s, box-shadow 0.35s;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.5s forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .card:hover {
-    background: rgba(0, 212, 255, 0.2);
-    transform: translateY(-10px);
-    border-color: #00d4ff;
+    transform: translateY(-10px) scale(1.01);
+    border-color: rgba(0, 212, 255, 0.55);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.25), 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
+/* Sale badge */
+.badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: linear-gradient(135deg, #00d4ff, #0080bb);
+    color: #000;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 50px;
+}
+
+/* Heart / Wishlist icon */
+.heart {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 2;
+}
+
+.heart:hover {
+    color: #ff4d6d;
+    transform: scale(1.2);
+}
+
+.heart.active {
+    color: #ff4d6d;
+}
+
+/* Product image */
 .card img {
     width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.25));
+    transition: filter 0.35s;
 }
 
-.card p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #00d4ff;
+.card:hover img {
+    filter: drop-shadow(0 0 22px rgba(0, 212, 255, 0.55));
+}
+
+/* Product name */
+.card .prod-name {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+}
+
+/* CTA neon text */
+.card .cta {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
+    transition: text-shadow 0.3s;
+}
+
+.card:hover .cta {
+    text-shadow: 0 0 20px var(--cyan), 0 0 40px rgba(0, 212, 255, 0.5);
+}
+
+/* ── POWER BUTTON ── */
+.power-section {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 50px;
 }
 
 .power-btn {
-    font-size: 50px;
-    color: #00d4ff;
-    margin-top: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2.5px solid var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--cyan);
     cursor: pointer;
-    text-shadow: 0 0 20px #00d4ff;
+    animation: pulse 2.8s ease-in-out infinite;
+    transition: box-shadow 0.3s;
 }
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 20px var(--cyan-glow),
+            0 0 50px rgba(0, 212, 255, 0.2),
+            inset 0 0 20px rgba(0, 212, 255, 0.08);
+    }
+    50% {
+        box-shadow:
+            0 0 35px var(--cyan),
+            0 0 80px rgba(0, 212, 255, 0.35),
+            inset 0 0 30px rgba(0, 212, 255, 0.15);
+    }
+}
+
+.power-btn:hover {
+    box-shadow:
+        0 0 40px var(--cyan),
+        0 0 80px rgba(0, 212, 255, 0.45),
+        inset 0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px 14px;
+        gap: 28px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        padding: 12px 8px 14px;
+        border-radius: 14px;
+    }
+
+    .card img {
+        margin-bottom: 10px;
+    }
+
+    .card .prod-name {
+        font-size: 0.65rem;
+    }
+
+    .card .cta {
+        font-size: 0.7rem;
+    }
+
+    .badge {
+        font-size: 0.58rem;
+        padding: 2px 6px;
+        top: 8px;
+        left: 8px;
+    }
+
+    .heart {
+        font-size: 0.9rem;
+        top: 8px;
+        right: 8px;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .power-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .grid {
+        gap: 7px;
+    }
+
+    .card {
+        padding: 9px 6px 11px;
+    }
+}
+
