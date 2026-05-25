@@ -1,0 +1,9 @@
+body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; color: white; background: #000; }
+#bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -1; object-fit: cover; }
+.logo { width: 150px; margin: 20px; }
+nav { display: flex; justify-content: space-between; align-items: center; }
+header { text-align: center; margin-top: 50px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 50px; }
+.card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+.card img { width: 100%; border-radius: 10px; }
+.power-btn { text-align: center; font-size: 50px; color: #00f2ff; cursor: pointer; text-shadow: 0 0 20px #00f2ff; margin-top: 30px; }
